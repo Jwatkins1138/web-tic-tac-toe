@@ -41,37 +41,37 @@
       </div>
       <script>
         // var testSquare = document.getElementById("square1A");
-        toggleX = function (square) {
-          if (square.children.length == 0) {
+        toggleX = function (evt) {
+          if (evt.currentTarget.children.length == 0) {
             x = document.createElement("img");
             x.classList.add("x-mark");
             x.src = 'assets/x.svg';
-            square.appendChild(x);
+            evt.currentTarget.appendChild(x);
           }
         }
 
-        toggleO = function (square) {
-          if (square.children.length == 0) {
+        toggleO = function (evt) {
+          if (evt.currentTarget.children.length == 0) {
             x = document.createElement("img");
             x.classList.add("o-mark");
             x.src = 'assets/o.svg';
-            square.appendChild(x);
+            evt.currentTarget.appendChild(x);
           }
         }
 
         xTurn = function () {
           document.querySelectorAll(".square").forEach(square => {
-            square.removeEventListener('click', () => toggleX(square));
-            square.removeEventListener('click', () => toggleO(square));
-            square.addEventListener('click', () => toggleX(square));
+            square.removeEventListener('click', toggleX );
+            square.removeEventListener('click', toggleO );
+            square.addEventListener('click', toggleX );
           })
         }
 
         oTurn = function () {
           document.querySelectorAll(".square").forEach(square => {
-            square.removeEventListener('click', () => toggleX(square));
-            square.removeEventListener('click', () => toggleO(square));
-            square.addEventListener('click', () => toggleO(square));
+            square.removeEventListener('click', toggleX );
+            square.removeEventListener('click', toggleO );
+            square.addEventListener('click', toggleO );
           })
         }
 
