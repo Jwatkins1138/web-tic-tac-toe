@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>tic-tac-toe</title>
+</head>
+<body>
+  <header>
+    <div class="head-container">
+      <div class="head-title">
+        <h1 class="title">tic-tac-toe</h1>
+      </div>
+      <div class="head-nav">
+        <input type="button" onclick="xTurn()" value="x turn">
+        <input type="button" onclick="oTurn()" value="o turn">
+      </div>
+    </div>
+
+  </header>
+  <main>
+    <div class="main-container">
+      <div class="main-left">
+        <p>main left</p>
+      </div>
+      <!-- <img class="x-mark" src='assets/x.svg'><img class="o-mark" src='assets/o.svg'> -->
+      <div class="main-center">
+        <div id="board">
+          <div id="square1A" class="square"></div>
+          <div id="square2A" class="square"></div>
+          <div id="square3A" class="square"></div>
+          <div id="square1B" class="square"></div>
+          <div id="square2B" class="square"></div>
+          <div id="square3B" class="square"></div>
+          <div id="square1C" class="square"></div>
+          <div id="square2C" class="square"></div>
+          <div id="square3C" class="square"></div>
+        </div>
+      </div>
+      <script>
+        // var testSquare = document.getElementById("square1A");
+        toggleX = function (square) {
+          if (square.children.length == 0) {
+            x = document.createElement("img");
+            x.classList.add("x-mark");
+            x.src = 'assets/x.svg';
+            square.appendChild(x);
+          }
+        }
+
+        toggleO = function (square) {
+          if (square.children.length == 0) {
+            x = document.createElement("img");
+            x.classList.add("o-mark");
+            x.src = 'assets/o.svg';
+            square.appendChild(x);
+          }
+        }
+
+        xTurn = function () {
+          document.querySelectorAll(".square").forEach(square => {
+            square.removeEventListener('click', () => toggleX(square));
+            square.removeEventListener('click', () => toggleO(square));
+            square.addEventListener('click', () => toggleX(square));
+          })
+        }
+
+        oTurn = function () {
+          document.querySelectorAll(".square").forEach(square => {
+            square.removeEventListener('click', () => toggleX(square));
+            square.removeEventListener('click', () => toggleO(square));
+            square.addEventListener('click', () => toggleO(square));
+          })
+        }
+
+
+
+        // testSquare.addEventListener('click', () => toggleX(testSquare));
+          
+        // document.querySelectorAll('.square').addEventListener
+      </script>
+      <div class="main-right">
+        <p>main right</p>
+      </div>
+
+    </div>
+
+  </main>
+  
+</body>
+</html>
