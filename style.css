@@ -63,12 +63,26 @@ main {
 .x-mark {
   width: 100%;
   position: relative;
+  opacity: 0%;
+  transition: opacity 5s ease-in;
+}
+
+.x-mark.show {
+  opacity: 100%;
 }
 
 .o-mark {
   width: 100%;
   position: relative;
+  opacity: 0%;
+  transition: opacity 5s ease-in;
 }
+
+.o-mark.show {
+  opacity: 100%;
+}
+
+
 
 .main-left {
 
