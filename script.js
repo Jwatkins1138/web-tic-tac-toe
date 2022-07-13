@@ -113,6 +113,21 @@ noTurn = function () {
   })
 }
 
+newGame = function () {
+  board.forEach((element, index) => {
+    board[index] = null;
+  })
+  document.querySelectorAll(".square").forEach(square => {
+    square.classList.remove("win");
+    if (square.children.length > 0) {
+      console.log(square);
+      square.removeChild(square.firstElementChild);
+    }
+  })
+  scoreBoard.innerHTML = "";
+  xTurn();
+}
+
 
 
 // testSquare.addEventListener('click', () => toggleX(testSquare));

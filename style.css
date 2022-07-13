@@ -50,6 +50,18 @@ main {
   min-width: 40em;
 }
 
+input[type=button] {
+  border: none;
+  border-radius: 50%;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  background: none;
+}
+
+input[type=button]:hover {
+  background-color: rgb(255, 0, 255, .5);
+}
+
 .square {
   display: flex;
   aspect-ratio: 1;
