@@ -34,7 +34,7 @@ main {
 }
 
 .main-right {
-
+  min-width: 10em;
 }
 
 .main-center {
@@ -58,33 +58,38 @@ main {
   border: 1px solid black;
   min-width: 2em;
   min-height: 2em;
+  transition: background-color .5s ease-in;
+}
+
+.square.win {
+  background-color: magenta;
 }
 
 .x-mark {
   width: 100%;
   position: relative;
-  opacity: 0%;
-  transition: opacity 5s ease-in;
+  opacity: 0;
+  transition: opacity .4s ease-in;
 }
 
 .x-mark.show {
-  opacity: 100%;
+  opacity: 1;
 }
 
 .o-mark {
   width: 100%;
   position: relative;
-  opacity: 0%;
-  transition: opacity 5s ease-in;
+  opacity: 0;
+  transition: opacity .4s ease-in;
 }
 
 .o-mark.show {
-  opacity: 100%;
+  opacity: 1;
 }
 
 
 
 .main-left {
-
+  min-width: 10em;
 }
 

@@ -1,4 +1,5 @@
 const board = [null, null, null, null, null, null, null, null, null];
+const scoreBoard = document.getElementById("right");
 
 setX = function(space) {
   board[space] = "x";
@@ -9,11 +10,44 @@ setO = function(space) {
 }
 
 checkBoard = function () {
-
   if (!board.includes(null)) {
-    document.getElementById("right").innerHTML = 
+    scoreBoard.innerHTML = 
       "<h1>DRAW</h1";
   }
+  checkWins();
+}
+
+checkWins = function () {
+  var wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  wins.forEach(win => {
+    checkX(win[0], win[1], win[2]);
+    checkO(win[0], win[1], win[2]);
+  })
+}
+
+checkX = function (first, second, third) {
+  if (board[first] == 'x' && board[second] == 'x' && board[third] =='x') {
+    scoreBoard.innerHTML = 
+    "<h1>X WINS</h1>";
+    setTimeout(colorWin(first.toString(), second.toString(), third.toString()), 500);
+    setTimeout(noTurn, 250);
+  }
+}
+
+checkO = function (first, second, third) {
+  if (board[first] == 'o' && board[second] == 'o' && board[third] =='o') {
+    scoreBoard.innerHTML = 
+    "<h1>O WINS</h1>";
+    setTimeout(colorWin(first.toString(), second.toString(), third.toString()), 500);
+    setTimeout(noTurn, 250);
+  }
+}
+
+
+colorWin = function (first, second, third) {
+  document.getElementById(first).classList.add('win');
+  document.getElementById(second).classList.add('win');
+  document.getElementById(third).classList.add('win');
 }
 
 toggleX = function (evt) {
@@ -22,12 +56,16 @@ toggleX = function (evt) {
     x.classList.add("x-mark");
     x.src = 'assets/x.svg';
     evt.currentTarget.appendChild(x);
-    x.classList.add("show");
     setX(evt.currentTarget.id.split("-"));
     oTurn();
     console.log(board);
     checkBoard();
+    setTimeout(showMarks, 200);
   }
+}
+
+showX = function (evt) {
+  evt.currentTarget.firstChild.classList.add("show");
 }
 
 toggleO = function (evt) {
@@ -36,12 +74,20 @@ toggleO = function (evt) {
     x.classList.add("o-mark");
     x.src = 'assets/o.svg';
     evt.currentTarget.appendChild(x);
-    x.classList.add("show");
     setO(evt.currentTarget.id.split("-"));
     xTurn();
     console.log(board);
     checkBoard();
+    setTimeout(showMarks, 200);
   }
+}
+
+showMarks = function () {
+  document.querySelectorAll(".square").forEach(square => {
+    if (square.children.length > 0) {
+      square.firstChild.classList.add("show");
+    }
+  })
 }
 
 xTurn = function () {
